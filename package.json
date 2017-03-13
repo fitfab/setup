@@ -1,0 +1,22 @@
+{
+  "name": "setup",
+  "version": "1.0.0",
+  "description": "initial setup for a node web app with webpack, babel, eslint, less",
+  "main": "index.js",
+  "scripts": {
+    “build”: “webpack --config webpack.config.prod.js -p”,
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "webpack",
+    "babel",
+    "node",
+    "and",
+    "more"
+  ],
+  "author": "Miguel Julio <miguel.julio.developer@gmail.com> (http://fitfab.com/)",
+  "license": "MIT",
+  "devDependencies": {
+    "webpack": "2.2.1"
+  }
+}
