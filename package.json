@@ -2,10 +2,12 @@
   "name": "setup",
   "version": "1.0.0",
   "description": "initial setup for a node web app with webpack, babel, eslint, less",
-  "main": "index.js",
+  "main": "server.js",
+  "module": "module.js",
   "scripts": {
-    “build”: “webpack --config webpack.config.prod.js -p”,
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "NODE_ENV=development nodemon --watch .",
+    "build": "webpack --config webpack.config.prod.js -p",
+    "serve": "NODE_ENV=production node server.js"
   },
   "keywords": [
     "webpack",
@@ -17,6 +19,13 @@
   "author": "Miguel Julio <miguel.julio.developer@gmail.com> (http://fitfab.com/)",
   "license": "MIT",
   "devDependencies": {
+    "nodemon": "1.11.0",
     "webpack": "2.2.1"
+  },
+  "dependencies": {
+    "body-parser": "1.17.1",
+    "express": "4.15.2",
+    "mongoose": "4.9.0",
+    "validator": "7.0.0"
   }
 }
