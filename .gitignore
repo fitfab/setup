@@ -3,3 +3,6 @@ node_modules
 
 # Private Application configuration
 app.config.js
+
+# distribution files (build)
+client/dist/*.*
