@@ -5,8 +5,8 @@
   "main": "server.js",
   "module": "module.js",
   "scripts": {
-    "dev": "NODE_ENV=development nodemon --watch .",
-    "build": "webpack --config webpack.config.prod.js -p",
+    "dev": "webpack-dev-server --env production --progress",
+    "build": "rm -rf ./client/dist/*.* && webpack --env production",
     "serve": "NODE_ENV=production node server.js"
   },
   "keywords": [
@@ -19,8 +19,11 @@
   "author": "Miguel Julio <miguel.julio.developer@gmail.com> (http://fitfab.com/)",
   "license": "MIT",
   "devDependencies": {
-    "nodemon": "1.11.0",
-    "webpack": "2.2.1"
+    "babel-cli": "6.24.0",
+    "babel-preset-env": "1.2.2",
+    "moment": "2.17.1",
+    "webpack": "2.2.1",
+    "webpack-dev-server": "2.4.2"
   },
   "dependencies": {
     "body-parser": "1.17.1",
