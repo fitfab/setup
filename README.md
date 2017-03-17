@@ -14,6 +14,6 @@ and use Wbepack as the tool for building the front-end.
 
 > :pencil: TODO
 > - [ ] add eslint
-> - [ ] setup Webpack
+> - [x] setup Webpack
 > - [ ] add Less to the project
 > - [ ] add Babel to compile es6 and JSX

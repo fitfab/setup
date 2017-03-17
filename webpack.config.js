@@ -24,6 +24,12 @@ const commonConfig = {
             }
         ]
     },
+    plugins: [
+        // Env plugin
+        new webpack.DefinePlugin({
+            'process.env': { NODE_ENV: JSON.stringify(nodeEnv) }
+        })
+    ],
     // webpack-dev-server setup
     devServer: {
         contentBase: path.resolve(__dirname, './'),
