@@ -32,7 +32,7 @@ const commonConfig = {
     ],
     // webpack-dev-server setup
     devServer: {
-        contentBase: path.resolve(__dirname, './'),
+        contentBase: path.resolve(__dirname, './client'),
         clientLogLevel: 'none',
         port: 9000,
         watchContentBase: true
