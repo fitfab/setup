@@ -1,7 +1,9 @@
 :sparkles: **Node App and Tooling** :sparkles:
 
-The plan is to create a setup server with Node.js and Express.js
-and use Wbepack as the tool for building the front-end.
+The plan is to setup server with Node.js and Express.js
+and use wepack as the tool for building the front-end.
+
+And webpack-dev-server for development.
 
 ***File Structure***
 
@@ -15,5 +17,6 @@ and use Wbepack as the tool for building the front-end.
 > :pencil: TODO
 > - [ ] add eslint
 > - [x] setup Webpack
+> - [x] setup webpack-dev-server proxy for api
 > - [ ] add Less to the project
 > - [ ] add Babel to compile es6 and JSX

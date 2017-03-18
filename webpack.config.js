@@ -25,7 +25,8 @@ const commonConfig = {
         ]
     },
     plugins: [
-        // Env plugin
+        // The DefinePlugin allows you to create global constants
+        // which can be configured at compile time.
         new webpack.DefinePlugin({
             'process.env': { NODE_ENV: JSON.stringify(nodeEnv) }
         })
@@ -33,8 +34,10 @@ const commonConfig = {
     // webpack-dev-server setup
     devServer: {
         contentBase: path.resolve(__dirname, './client'),
-        clientLogLevel: 'none',
         port: 9000,
+        proxy: {
+          "/api/users": "http://localhost:3000"
+      },
         watchContentBase: true
     }
 
@@ -42,7 +45,8 @@ const commonConfig = {
 
 module.exports = function start(env) {
 
-    console.log('ENV: ', env);
+    console.log(`fitfab:\t${env}`);
+    console.log(`proxy:\t${commonConfig.devServer.proxy["/api/users"]}\n`)
     return commonConfig;
 
 };

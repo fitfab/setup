@@ -1,5 +1,6 @@
-# node packages
+# node files and logs
 node_modules
+*.log
 
 # Private Application configuration
 app.config.js
