@@ -5,8 +5,8 @@
   "main": "server.js",
   "module": "module.js",
   "scripts": {
-    "dev": "webpack-dev-server --env development --progress",
-    "build": "webpack --env production",
+    "dev": "webpack-dashboard -- webpack-dev-server --env development --progress",
+    "build": "webpack-dashboard -- webpack --env production",
     "lint:js": "eslint ./ webpack.*.js --fix --cache",
     "serve": "NODE_ENV=production node server.js"
   },
@@ -27,6 +27,7 @@
     "eslint-plugin-react": "6.10.0",
     "moment": "2.17.1",
     "webpack": "2.2.1",
+    "webpack-dashboard": "0.3.0",
     "webpack-dev-server": "2.4.2"
   },
   "dependencies": {

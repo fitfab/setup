@@ -1,6 +1,7 @@
 /* eslint no-console: 0 */
 const path = require('path');
 const webpack = require('webpack');
+const DashboardPlugin = require('webpack-dashboard/plugin');
 
 const nodeEnv = process.env.NODE_ENV || 'production';
 const commonConfig = {
@@ -40,7 +41,8 @@ const commonConfig = {
         // which can be configured at compile time.
         new webpack.DefinePlugin({
             'process.env': { NODE_ENV: JSON.stringify(nodeEnv) }
-        })
+        }),
+        new DashboardPlugin()
     ],
     // webpack-dev-server setup
     devServer: {
