@@ -1,4 +1,8 @@
 import moment from 'moment';
 
-const root = document.getElementById('root');
-root.innerHTML = moment().format('MMM Do YYYY');
+export default ( entry = 'Welcome to WENOMOR2') => {
+    const root = document.getElementById('root');
+    const now = moment().format('MMM Do YYYY');
+    root.innerHTML =    `<p>This is the entry file: <b>${entry}</b></p>
+                        <p>${now}</p>` ;
+};

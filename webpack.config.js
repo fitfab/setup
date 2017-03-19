@@ -6,7 +6,7 @@ const nodeEnv = process.env.NODE_ENV || 'production';
 const commonConfig = {
     devtool: (nodeEnv === 'production')? 'source-map': 'eval',
     entry: {
-        main: path.join(__dirname, '/client/src/js/main.js')
+        main: path.join(__dirname, '/client/src/js/index.js')
     },
     output: {
         path: path.join(__dirname, '/client/dist'),

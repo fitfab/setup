@@ -34,7 +34,7 @@ router.post('/', (req, res) => {
 });
 
 router.put('/:id', (req, res) => {
-    console.log(req.params);
+    //console.log(req.params);
     res.status(200).json(req.body);
     // const { errors, isValid } = validateUser(req.body);
     // const results = {
