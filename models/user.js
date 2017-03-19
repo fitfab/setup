@@ -1,5 +1,5 @@
-const mongoose = require('mongoose')
-const bcrypt = require('bcryptjs')
+const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
 
 // Define model schema
 const UserSchema = mongoose.Schema({
@@ -23,10 +23,10 @@ UserSchema.methods.createUser = function(callback) {
     return bcrypt.genSalt(10, function(err, salt) {
         bcrypt.hash(user.password, salt, function(err, hash) {
             user.password = hash;
-            user.save(callback)
+            user.save(callback);
         });
     });
-}
+};
 
 // compile eschema
 const User = mongoose.model('User', UserSchema);

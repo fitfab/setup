@@ -10,4 +10,4 @@
  */
 module.exports = {
     db_uri: 'mongodb://user:password@ds0072017.mlab.com:port/database'
-}
+};

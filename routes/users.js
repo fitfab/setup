@@ -29,9 +29,9 @@ router.post('/', (req, res) => {
         if (err) throw err;
         results.user = user;
         res.status(200).json(results);
-    })
+    });
 
-})
+});
 
 router.put('/:id', (req, res) => {
     console.log(req.params);
@@ -62,6 +62,6 @@ router.put('/:id', (req, res) => {
     //     res.status(200).json(results);
     // })
 
-})
+});
 
 module.exports = router;

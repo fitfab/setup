@@ -15,7 +15,7 @@ And webpack-dev-server for development.
     * :page_facing_up: server.js
 
 > :pencil: TODO
-> - [ ] add eslint
+> - [x] add eslint
 > - [x] setup Webpack
 > - [x] setup webpack-dev-server proxy for api
 > - [ ] add Less to the project

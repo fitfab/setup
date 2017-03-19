@@ -15,8 +15,19 @@ const commonConfig = {
     },
     module: {
         rules: [
+            // Reference: https://survivejs.com/webpack/developing/linting/
             {
-                test: /\.js$/,
+                test: /\.jsx?$/, // both .js and .jsx
+                enforce: 'pre',
+                exclude: /node_modules/,
+                loader: 'eslint-loader',
+                options: {
+                    emitWarning: true,
+                    fix: true
+                }
+            },
+            {
+                test: /\.jsx?$/, // both .js and .jsx
                 exclude: [/node_modules/],
                 use: [{
                     loader: 'babel-loader'
@@ -36,17 +47,17 @@ const commonConfig = {
         contentBase: path.resolve(__dirname, './client'),
         port: 9000,
         proxy: {
-          "/api/users": "http://localhost:3000"
-      },
+            '/api/users': 'http://localhost:3000'
+        },
         watchContentBase: true
     }
 
-}
+};
 
 module.exports = function start(env) {
-
+    const endpoint = '/api/users';
     console.log(`fitfab:\t${env}`);
-    console.log(`proxy:\t${commonConfig.devServer.proxy["/api/users"]}\n`)
+    console.log(`proxy:\t${commonConfig.devServer.proxy[endpoint]}\n`);
     return commonConfig;
 
 };

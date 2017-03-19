@@ -4,7 +4,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
-const config = require('./app.config')
+const config = require('./app.config');
 const users = require('./routes/users');
 
 /*
@@ -14,7 +14,7 @@ const users = require('./routes/users');
  * plenty of time in most operating environments.
  */
 const options = { server: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } },
-                replset: { socketOptions: { keepAlive: 300000, connectTimeoutMS : 30000 } } };
+    replset: { socketOptions: { keepAlive: 300000, connectTimeoutMS : 30000 } } };
 
 const mongodbUri = config.db_uri;
 
@@ -35,7 +35,7 @@ app.use('/api/users', users);
 
 // Define catch all route
 app.get('/*', (req,res) => {
-  res.sendFile(path.join(__dirname, '/client/index.html'))
+    res.sendFile(path.join(__dirname, '/client/index.html'));
 });
 
 
@@ -44,7 +44,7 @@ app.get('/*', (req,res) => {
 // then start the app.
 conn.once('open', () => {
     console.log('Connect to the mLab');
-    console.log(process.env.NODE_ENV)
+    console.log(process.env.NODE_ENV);
     // Listen in port 3000
     app.listen(3000,() => console.log('Running in localhost:3000'));
-})
+});

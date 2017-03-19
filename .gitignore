@@ -7,3 +7,6 @@ app.config.js
 
 # distribution files (build)
 client/dist/*.*
+
+# eslint files
+.eslintcache
