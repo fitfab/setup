@@ -1,5 +1,6 @@
 import moment from 'moment';
 
+require('./../styles/main.less');
 export default ( entry = 'Welcome to WENOMOR2') => {
     const root = document.getElementById('root');
     const now = moment().format('MMM Do YYYY');

@@ -5,10 +5,11 @@
   "main": "server.js",
   "module": "module.js",
   "scripts": {
-    "dev": "webpack-dashboard -- webpack-dev-server --env development --progress",
-    "build": "webpack-dashboard -- webpack --env production",
+    "dev": "rm -rf ./client/dist/*.* && webpack-dev-server --env development --progress",
+    "build": "webpack --env production",
+    "build:styles": "lessc ./client/src/styles/main.less ./client/dist/main.css",
     "lint:js": "eslint ./ webpack.*.js --fix --cache",
-    "serve": "NODE_ENV=production node server.js"
+    "server": "NODE_ENV=production node server.js"
   },
   "keywords": [
     "webpack",
@@ -23,11 +24,15 @@
     "babel-cli": "6.24.0",
     "babel-loader": "6.4.1",
     "babel-preset-env": "1.2.2",
+    "css-loader": "0.27.3",
     "eslint": "3.18.0",
     "eslint-plugin-react": "6.10.0",
+    "extract-text-webpack-plugin": "2.1.0",
+    "less": "2.7.2",
+    "less-loader": "2.2.3",
     "moment": "2.17.1",
+    "postcss-loader": "1.3.1",
     "webpack": "2.2.1",
-    "webpack-dashboard": "0.3.0",
     "webpack-dev-server": "2.4.2"
   },
   "dependencies": {

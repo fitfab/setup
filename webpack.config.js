@@ -2,6 +2,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const DashboardPlugin = require('webpack-dashboard/plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const nodeEnv = process.env.NODE_ENV || 'production';
 const commonConfig = {
@@ -28,6 +29,14 @@ const commonConfig = {
                 }
             },
             {
+                test: /\.less$/,
+                use: ExtractTextPlugin.extract({
+                    fallback: 'style-loader',
+                    use: ['css-loader', 'postcss-loader', 'less-loader'],
+                    publicPath: path.resolve(__dirname, './client/dist')
+                })
+            },
+            {
                 test: /\.jsx?$/, // both .js and .jsx
                 exclude: [/node_modules/],
                 use: [{
@@ -37,6 +46,8 @@ const commonConfig = {
         ]
     },
     plugins: [
+        // extract css file into separate file
+        new ExtractTextPlugin({ filename: '[name].css' }),
         // The DefinePlugin allows you to create global constants
         // which can be configured at compile time.
         new webpack.DefinePlugin({
@@ -46,7 +57,7 @@ const commonConfig = {
     ],
     // webpack-dev-server setup
     devServer: {
-        contentBase: path.resolve(__dirname, './client'),
+        contentBase: path.resolve(__dirname, './'),
         port: 9000,
         proxy: {
             '/api/users': 'http://localhost:3000'
