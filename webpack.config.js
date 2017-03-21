@@ -5,15 +5,21 @@ const DashboardPlugin = require('webpack-dashboard/plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const nodeEnv = process.env.NODE_ENV || 'production';
+const buildPath = path.join(__dirname, '/client/dist');
 const commonConfig = {
     devtool: (nodeEnv === 'production')? 'source-map': 'eval',
     entry: {
         main: path.join(__dirname, '/client/src/js/index.js')
     },
     output: {
-        path: path.join(__dirname, '/client/dist'),
+        // the target directory for all output files
+        // must be an absolute path (use the Node.js path module)
+        path: buildPath,
         filename: '[name].js',
-        publicPath: '/client/dist'
+        // the url to the output directory
+        // resolved relative to the HTML page
+        publicPath: '/dist/',
+
     },
     module: {
         rules: [
@@ -57,7 +63,8 @@ const commonConfig = {
     ],
     // webpack-dev-server setup
     devServer: {
-        contentBase: path.resolve(__dirname, './'),
+        // contentBase directory where the index.html is
+        contentBase: path.resolve(__dirname, './client/'),
         port: 9000,
         proxy: {
             '/api/users': 'http://localhost:3000'

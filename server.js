@@ -27,6 +27,9 @@ conn.on('error', console.error.bind(console, 'connection error:'));
 // Define the app server
 const app = express();
 
+// Serving static files in Express
+app.use(express.static('client'));
+
 // Using body parser for the API
 app.use(bodyParser.json());
 
