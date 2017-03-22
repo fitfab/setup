@@ -18,5 +18,5 @@ And webpack-dev-server for development.
 > - [x] add eslint
 > - [x] setup Webpack
 > - [x] setup webpack-dev-server proxy for api
-> - [ ] add Less to the project
-> - [ ] add Babel to compile es6 and JSX
+> - [x] add Less to the project
+> - [x] add Babel to compile es6 -- TODO JSX

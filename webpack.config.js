@@ -58,8 +58,7 @@ const commonConfig = {
         // which can be configured at compile time.
         new webpack.DefinePlugin({
             'process.env': { NODE_ENV: JSON.stringify(nodeEnv) }
-        }),
-        new DashboardPlugin()
+        })
     ],
     // webpack-dev-server setup
     devServer: {
