@@ -1,7 +1,8 @@
 /* eslint no-console: 0 */
 const path = require('path');
 const webpack = require('webpack');
-const DashboardPlugin = require('webpack-dashboard/plugin');
+const optimize = require('webpack').optimize;
+
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const nodeEnv = process.env.NODE_ENV || 'production';
@@ -52,6 +53,8 @@ const commonConfig = {
         ]
     },
     plugins: [
+        // Adding Uglyfy
+        new optimize.UglifyJsPlugin(),
         // extract css file into separate file
         new ExtractTextPlugin({ filename: '[name].css' }),
         // The DefinePlugin allows you to create global constants

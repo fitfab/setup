@@ -11,7 +11,7 @@ And webpack-dev-server for development.
     * :file_folder: client *--- front-end code*
     * :file_folder: models *--- Mongoose models*
     * :file_folder: routes *--- Routes Express.js*
-    * :file_folder: shared *--- shared assets betweenfront-end and back-end*
+    * :file_folder: shared *--- shared assets between front-end and back-end*
     * :page_facing_up: server.js
 
 > :pencil: TODO

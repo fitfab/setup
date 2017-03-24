@@ -5,8 +5,8 @@
   "main": "server.js",
   "module": "module.js",
   "scripts": {
-    "dev": "rm -rf ./client/dist/*.* && webpack-dev-server --env development --progress",
-    "build": "webpack --env production",
+    "dev": "webpack-dev-server --env development --progress",
+    "build": "rm -rf ./client/dist/ && webpack --env production",
     "build:styles": "lessc ./client/src/styles/main.less ./client/dist/main.css",
     "lint:js": "eslint ./ webpack.*.js --fix --cache",
     "server": "NODE_ENV=production node server.js"
