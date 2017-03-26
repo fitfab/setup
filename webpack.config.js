@@ -2,8 +2,10 @@
 const path = require('path');
 const webpack = require('webpack');
 const optimize = require('webpack').optimize;
-
+const merge = require('webpack-merge');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
+const parts = require('./webpack.parts');
 
 const nodeEnv = process.env.NODE_ENV || 'production';
 const buildPath = path.join(__dirname, '/client/dist');
@@ -67,24 +69,32 @@ const commonConfig = {
         new webpack.DefinePlugin({
             'process.env': { NODE_ENV: JSON.stringify(nodeEnv) }
         })
-    ],
-    // webpack-dev-server setup
-    devServer: {
-        // contentBase directory where the index.html is
-        contentBase: path.resolve(__dirname, './client/'),
-        port: 9000,
-        proxy: {
-            '/api/users': 'http://localhost:3000'
-        },
-        watchContentBase: true
-    }
+    ]
 
 };
 
-module.exports = function start(env) {
-    const endpoint = '/api/users';
+/**
+ * development configuration
+ * @type {object}
+ */
+const devConfig = merge([
+    parts.devServer({
+        host: 'localhost',
+        port: 9000,
+        proxy: {
+            '/api/users': 'http://localhost:3000'
+        }
+    })
+]);
+
+
+module.exports = (env) => {
     console.log(`fitfab:\t${env}`);
-    console.log(`proxy:\t${commonConfig.devServer.proxy[endpoint]}\n`);
+    // if env is development merge common configuration
+    // with dev server configuration
+    if(env === 'development') {
+        return merge(commonConfig, devConfig);
+    }
     return commonConfig;
 
 };
