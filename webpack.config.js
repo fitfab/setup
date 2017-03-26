@@ -7,8 +7,13 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const nodeEnv = process.env.NODE_ENV || 'production';
 const buildPath = path.join(__dirname, '/client/dist');
+
 const commonConfig = {
     devtool: (nodeEnv === 'production')? 'source-map': 'eval',
+    watch: true,
+    watchOptions: {
+        ignored: /node_modules/
+    },
     entry: {
         main: path.join(__dirname, '/client/src/js/index.js')
     },

@@ -18,5 +18,8 @@ And webpack-dev-server for development.
 > - [x] add eslint
 > - [x] setup Webpack
 > - [x] setup webpack-dev-server proxy for api
+> - [x] add UglifyJsPlugin
+> - [x] setup tree shaking
 > - [x] add Less to the project
+> - [x] set watch and watchOptions for webpack
 > - [x] add Babel to compile es6 -- TODO JSX
