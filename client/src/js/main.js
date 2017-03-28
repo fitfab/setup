@@ -1,7 +1,11 @@
-import { intro } from './envinfo';
+import React from 'react';
+import { render } from 'react-dom';
+import Quote from './quote';
 
 require('./../styles/main.less');
-export default () => {
-    const root = document.getElementById('root');
-    root.innerHTML = `${intro()}`;
-};
+
+const root = document.getElementById('root');
+render(
+    <Quote />,
+    root
+);

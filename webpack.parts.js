@@ -9,10 +9,6 @@ exports.devServer = ({ host, port, proxy } = {}) => ({
         host, // default to localhost
         port, // default to 8080
         proxy,
-        overlay: {
-            errors: true,
-            warnings: true,
-        },
         watchContentBase: true
     }
 });

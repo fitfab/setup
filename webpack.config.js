@@ -12,12 +12,13 @@ const buildPath = path.join(__dirname, '/client/dist');
 const commonConfig = merge([
     {
         devtool: (nodeEnv === 'production')? 'source-map': 'eval',
-        watch: true,
+        // only watch when in development
+        watch: (nodeEnv === 'development'),
         watchOptions: {
             ignored: /node_modules/
         },
         entry: {
-            main: path.join(__dirname, '/client/src/js/index.js')
+            main: path.join(__dirname, '/client/src/js/main.js')
         },
         output: {
             // the target directory for all output files
