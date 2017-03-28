@@ -17,6 +17,18 @@ const commonConfig = merge([
         watchOptions: {
             ignored: /node_modules/
         },
+        // Generate multiple bundles at once by using entry object
+        // let's say you have 2 files: about.html and register.html
+        // and you need to create a bundle for each file. This is will be
+        // the setup for it.
+        //
+        //  entry: {
+        //      about: path.join(__dirname, '/client/src/js/about.js'),
+        //      register: path.join(__dirname, '/client/src/js/register.js'),
+        //  }
+        //
+        //  Note:   if it's a SPA, you can still use the object entry.
+        //          you just enter one entry in the object.
         entry: {
             main: path.join(__dirname, '/client/src/js/main.js')
         },
@@ -24,6 +36,8 @@ const commonConfig = merge([
             // the target directory for all output files
             // must be an absolute path (use the Node.js path module)
             path: buildPath,
+            // '[name].js' macthes the entry object above and will output
+            // main.js in the dist folder.
             filename: '[name].js',
             // the url to the output directory
             // resolved relative to the HTML page
