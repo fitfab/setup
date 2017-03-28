@@ -1,10 +1,11 @@
-import moment from 'moment';
-import { intro } from './envinfo';
+import React from 'react';
+import { render } from 'react-dom';
+import Quote from './quote';
 
 require('./../styles/main.less');
-export default () => {
-    const root = document.getElementById('root');
-    const now = moment().format('MMM Do YYYY');
-    root.innerHTML = `${intro()}
-                    <p>${now}</p>`;
-};
+
+const root = document.getElementById('root');
+render(
+    <Quote />,
+    root
+);
