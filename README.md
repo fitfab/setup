@@ -22,4 +22,4 @@ And webpack-dev-server for development.
 > - [x] setup tree shaking
 > - [x] add Less to the project
 > - [x] set watch and watchOptions for webpack
-> - [x] add Babel to compile es6 -- TODO JSX
+> - [x] add Babel to compile ES6 and JSX
