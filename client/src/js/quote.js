@@ -17,9 +17,13 @@ export default React.createClass({
 
     render() {
         return (
-            <blockquote>
-                {this.props.quote}
-            </blockquote>
+            <div>
+                <h1>SWAPI</h1>
+                <p>{this.props.quote}</p>
+                <p>more herer</p>
+                <p>more herer</p>
+                <p>more herer</p>
+            </div>
         );
     }
 });

@@ -1,8 +1,33 @@
 body {
     font-family: 'Quicksand', sans-serif;
+    display: flex;
+    min-width: 320px;
+    height: 100vh;
+    justify-content: center; // This defines the alignment along the main axis.
+    align-items: center; // align item vertically in this case
 }
 h1 {
-    width: 80%;
-    margin: 20px auto;
+    margin: 0 auto;
     color: #006890;
+    background: #c5d6e4;
+    text-align: center;
+}
+
+#root {
+    display: flex;
+    height: 90vh;
+    min-width: 320px;
+    max-width: 780px;
+    justify-content: center; // This defines the alignment along the main axis.
+    align-items: flex-start; // align item vertically in this case
+    box-shadow: 0px 0px 5px 1px rgba(5,77,140,1);
+
+
+    p {
+        background: #fbfbfb;
+        border-bottom: 1px solid #eee;
+        margin: 0;
+        padding: 10px;
+
+    }
 }
