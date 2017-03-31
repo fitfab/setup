@@ -9,31 +9,27 @@ export default React.createClass({
     },
     getInitialState() {
         return {
+            loading: true,
             movies: null
         };
     },
 
-    componentDidMount(){
+    componentWillReceiveProps(nextProps) {
+        if(nextProps.profile.name){
+            this.setState({ loading: true });
+            this.getMovieResponses();
+        }
+    },
 
-        // fetch all movies and pushes it into an array
-        this.fetchMovies()
-            .then(responses => {
-                return Promise.all(responses.map(m => m.data));
-            })
-            .then(arr => {
-                console.log(arr);
-                // holds the movies in the state
-                this.setState({
-                    movies: arr
-                });
-            });
+    componentDidMount() {
+        this.getMovieResponses();
     },
 
     /**
      * getMovies Return a promise after fetching all movies
      * @return [Promise]
      */
-    fetchMovies(){
+    queueMovieRequests(){
         const { films } = this.props.profile;
         let out = [];
         films.map(film =>{
@@ -42,20 +38,34 @@ export default React.createClass({
         return Promise.all(out);
     },
 
-    showMovies(){
-        const { movies } = this.state;
-        if(movies) {
-            return movies.map(m =>{
-                console.log(m);
-                return (
-                    <p>{m.title} <b>{moment(m.release_date).format('MMMM Do YYYY')}</b></p>
-                );
+    getMovieResponses() {
+        // fetch all movies and pushes it into an array
+        this.queueMovieRequests()
+            .then(responses => {
+                return Promise.all(responses.map(m => m.data));
+            })
+            .then(arr => {
+                // holds the movies in the state
+                this.setState({
+                    movies: arr,
+                    loading: false
+                });
             });
+    },
+
+    showMovies(){
+        const { loading, movies } = this.state;
+        if (loading) {
+            return(<p>Loading....</p>);
         }
+        return movies.map(m =>{
+            return (
+                <p>{m.title} <b>{moment(m.release_date).format('MMMM Do YYYY')}</b></p>
+            );
+        });
     },
 
     render(){
-        console.log('render: ',this.props.profile);
         return(
             <div className="Profile">
                 <h1>{ this.props.profile.name}</h1>

@@ -23,10 +23,11 @@ export default React.createClass({
         event.preventDefault();
         let endpoint = event.target.href;
         console.log(endpoint);
-
         axios.get(endpoint)
             .then((response) => {
-                this.setState({ profile: Object.assign(this.state.profile, response.data)});
+                this.setState({
+                    profile: Object.assign(this.state.profile, response.data)
+                });
             })
             .catch( err => console.log(err));
     },
@@ -48,14 +49,6 @@ export default React.createClass({
     renderList() {
         return this.state.characters.map((c) => this.renderItem(c));
     },
-    componentDidMount() {
-        // axios.get('https://swapi.co/api/people/')
-        //     .then((response) => {
-        //         console.log(response);
-        //     })
-        //     .catch( err => console.log(err));
-    },
-
 
     render() {
         return (
