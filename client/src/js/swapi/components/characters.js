@@ -1,7 +1,7 @@
 /* eslint no-console: 0 */
 import React from 'react';
 import axios from 'axios';
-import list from './../initial-state.js';
+import InitialState from './../initial-state.js';
 import Profile from './profile.js';
 
 // Chose this style to reduce boilerplate code.
@@ -12,38 +12,49 @@ export default React.createClass({
 
     getInitialState() {
         return {
-            characters: list,
-            profile: {
-                movieList:[]
-            }
+            characters: InitialState,
+            profile: {},
+            error: null
         };
     },
 
-    fetch(event) {
+    fetchProfile(event) {
         event.preventDefault();
         let endpoint = event.target.href;
         console.log(endpoint);
         axios.get(endpoint)
             .then((response) => {
                 this.setState({
-                    profile: Object.assign(this.state.profile, response.data)
+                    profile: Object.assign(this.state.profile, response.data),
+                    error: null
                 });
             })
-            .catch( err => console.log(err));
+            .catch( err => {
+                this.setState({
+                    error: {
+                        message: 'These coordinates DO NOT exist in the galaxy',
+                        err
+                    }
+                });
+            });
     },
 
     renderProfile(){
-        const films = this.state.profile.films;
+        const ready = this.state.profile && this.state.profile.films;
+        const { error } = this.state;
+        // if there is some errors
+        if ( error ) {
+            return (<h2 className="error">{error.message}</h2>);
+        }
         // display profile
-        return (films && <Profile profile={this.state.profile} />);
+        return (ready && <Profile profile={this.state.profile} />);
     },
 
     renderItem({ name, url}){
         return (
             <p>
-                <a href={url} onClick={this.fetch}>{name}</a>
+                <a href={url} onClick={this.fetchProfile}>{name}</a>
             </p>
-
         );
     },
     renderList() {
@@ -54,12 +65,11 @@ export default React.createClass({
         return (
             <div className="content">
                 <div className="col">
-                    <h1><span>SWAPI</span></h1>
+                    <h1><span>STAR WAR</span></h1>
                     {this.renderList()}
-                </div>
-                <div className="col">
                     {this.renderProfile()}
                 </div>
+
             </div>
         );
     }

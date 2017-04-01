@@ -1,49 +1,94 @@
 body {
+    background: #666;
     font-family: 'Quicksand', sans-serif;
     display: flex;
 
     height: 100vh;
     justify-content: center; // This defines the alignment along the main axis.
     align-items: center; // align item vertically in this case
+    perspective: 20em;
+    font-smoothing: antialiased;
+    text-rendering: geometricPrecision;
+
+    letter-spacing: 3px;
 }
 h1, h2, h3 {
     margin: 0 auto;
-    color: #fff;
-    background: #c5d6e4;
+    color: #e91e63;
     text-align: center;
     position: relative;
     font-size: 20px;
 }
+.error {
+    color: #1e71b3;
+    padding: 3px;
+    font-size: 16px;
+}
+
+a {
+    color: #333;
+    text-decoration: none;
+    &:hover {
+    letter-spacing: 5px;
+    color: #111;
+    }
+}
 
 #root {
+    background: #ccc;
     display: flex;
-    height: 90vh;
+    height: 100vh;
     width: 100vw;
     min-width: 320px;
     max-width: 780px;
     justify-content: center; // This defines the alignment along the main axis.
-    align-items: flex-start; // align item vertically in this case
-    box-shadow: 0px 0px 5px 1px #b4c6d2;
+    align-items: flex-end; // align item vertically in this case
+    transform: rotateX(30deg);
 
     .content {
         width: 100%;
         display: flex;
-        height: 90vh;
+        align-items: center; // align item vertically in this case
+        height: 100vh;
+        transition: all 1s cubic-bezier(0, .36, 0, 1);
+
         .col {
             flex:1;
-            border: 2px solid #fff;
-            background: #fbfbfb;
+            flex-direction: row-reverse;
+
         }
     }
     p {
-
-        border-bottom: 1px solid #eee;
         margin: 0;
         padding: 10px;
+        text-align: center;
 
         b {
-            display: inline-block;
-            float: right;
+            display: block;
+            font-size: 12px;
         }
     }
+}
+
+// Reference: http://tobiasahlin.com/spinkit/
+.spinner {
+  width: 40px;
+  height: 40px;
+  margin: 100px auto;
+  background-color: #333;
+
+  border-radius: 100%;
+
+  animation: sk-scaleout 1.0s infinite ease-in-out;
+}
+
+@keyframes sk-scaleout {
+  0% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  } 100% {
+    -webkit-transform: scale(1.0);
+    transform: scale(1.0);
+    opacity: 0;
+  }
 }

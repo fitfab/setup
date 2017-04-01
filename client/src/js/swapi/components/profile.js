@@ -33,7 +33,12 @@ export default React.createClass({
         const { films } = this.props.profile;
         let out = [];
         films.map(film =>{
-            out.push(axios.get(film));
+            out.push(axios.get(film).catch(err => {
+                this.setState({
+                    message: 'No, This is not going to happened!',
+                    err
+                });
+            }));
         });
         return Promise.all(out);
     },
@@ -56,16 +61,17 @@ export default React.createClass({
     showMovies(){
         const { loading, movies } = this.state;
         if (loading) {
-            return(<p>Loading....</p>);
+            return(<div className="spinner"></div>);
         }
         return movies.map(m =>{
             return (
-                <p>{m.title} <b>{moment(m.release_date).format('MMMM Do YYYY')}</b></p>
+                <p><b>{moment(m.release_date).format('MMMM Do YYYY')}</b>{m.title}</p>
             );
         });
     },
 
     render(){
+        console.log(this.state);
         return(
             <div className="Profile">
                 <h1>{ this.props.profile.name}</h1>
