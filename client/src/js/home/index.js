@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 // Update to React v15.5 and as we prepare for React 16
 // The Facebook is recommending that we migrate them to JavaScript classes.
 // https://facebook.github.io/react/blog/
-export default class Quote extends React.Component {
+export default class Home extends React.Component {
     constructor(props) {
         super(props);
     }
@@ -17,10 +17,10 @@ export default class Quote extends React.Component {
         );
     }
 }
-Quote.propTypes = {
+Home.propTypes = {
     quote: PropTypes.string
 };
 
-Quote.defaultProps = {
+Home.defaultProps = {
     quote: 'You must be the change you wish to see in the world. -- Mahatma Gandhi'
 };
