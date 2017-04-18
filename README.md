@@ -23,3 +23,6 @@ And webpack-dev-server for development.
 > - [x] add Less to the project
 > - [x] set watch and watchOptions for webpack
 > - [x] add Babel to compile ES6 and JSX
+> - [x] update react to v15.5
+> - [x] Migrate to ES6 classes from React.createClass
+> - [] add react-router

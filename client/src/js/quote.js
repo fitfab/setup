@@ -1,19 +1,13 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
-// Chose this style to reduce boilerplate code.
-// speacialyy when dealing with fucntion binding
-// https://facebook.github.io/react/docs/react-without-es6.html#autobinding
-export default React.createClass({
-    displayName: 'Quote',
-    propTypes: {
-        quote: PropTypes.string
-    },
-
-    getDefaultProps: function() {
-        return {
-            quote: 'You must be the change you wish to see in the world. -- Mahatma Gandhi'
-        };
-    },
+// Update to React v15.5 and as we prepare for React 16
+// The Facebook is recommending that we migrate them to JavaScript classes.
+// https://facebook.github.io/react/blog/
+export default class Quote extends React.Component {
+    constructor(props) {
+        super(props);
+    }
 
     render() {
         return (
@@ -22,4 +16,11 @@ export default React.createClass({
             </blockquote>
         );
     }
-});
+}
+Quote.propTypes = {
+    quote: PropTypes.string
+};
+
+Quote.defaultProps = {
+    quote: 'You must be the change you wish to see in the world. -- Mahatma Gandhi'
+};
